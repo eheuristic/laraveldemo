@@ -1,4 +1,23 @@
 <?php
+
+// If you set Origin solution mutltiple that will not acceptable
+
+
+
+if (!empty($_SERVER["HTTP_ORIGIN"])) {
+    $origin = $_SERVER["HTTP_ORIGIN"];
+    $allowed_origins = array(
+        // "http://localhost",
+        // 'http://localhost:4200'
+    );
+    if (in_array($origin, $allowed_origins, true) === true) {
+        header('Access-Control-Allow-Origin:' . $origin);
+        header('Access-Control-Allow-Credentials: true');
+        header('Access-Control-Allow-Methods: POST,OPTIONS');
+        header('Access-Control-Allow-Headers: Content-Type,Authorization');
+    }
+}
+
 /**
  * Laravel - A PHP Framework For Web Artisans
  *
